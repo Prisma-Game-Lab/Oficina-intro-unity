@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Perigo : MonoBehaviour
 {
-    [Tooltip("Tag do objeto que colidirá com o perigo")] 
-    public string tagObjetoColidido;
+    [Tooltip("Lista de tagss do objeto que causará algum efeito ao colidir com o perigo")] 
+    public List<string> tagObjetoAReagir = new List<string>();
     [Tooltip("O nome da cena que será carregada quando algum objeto colidir com esse. \nDeixar em branco se não for carregar uma cena")]
     public string cenaParaCarregar;
     [Tooltip("O objeto que será ativado quando algum objeto colidir com esse. \nDeixar em branco se não for ativar nenhum objeto")]
@@ -20,21 +20,29 @@ public class Perigo : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (tagObjetoColidido == collision.gameObject.tag)
+        foreach(string tagObjeto in tagObjetoAReagir)
         {
-            Destroy(collision.gameObject);
+            if (tagObjeto == collision.gameObject.tag)
+            {
+                Destroy(collision.gameObject);
 
-            TratarEfeitosSecundarios();
+                TratarEfeitosSecundarios();
+                break;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (tagObjetoColidido == collision.gameObject.tag)
+        foreach (string tagObjeto in tagObjetoAReagir)
         {
-            Destroy(collision.gameObject);
+            if (tagObjeto == collision.gameObject.tag)
+            {
+                Destroy(collision.gameObject);
 
-            TratarEfeitosSecundarios();
+                TratarEfeitosSecundarios();
+                break;
+            }
         }
     }
 
@@ -42,21 +50,29 @@ public class Perigo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (tagObjetoColidido == collision.gameObject.tag)
+        foreach (string tagObjeto in tagObjetoAReagir)
         {
-            Destroy(collision.gameObject);
+            if (tagObjeto == collision.gameObject.tag)
+            {
+                Destroy(collision.gameObject);
 
-            TratarEfeitosSecundarios();
+                TratarEfeitosSecundarios();
+                break;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (tagObjetoColidido == collision.gameObject.tag)
+        foreach (string tagObjeto in tagObjetoAReagir)
         {
-            Destroy(collision.gameObject);
+            if (tagObjeto == collision.gameObject.tag)
+            {
+                Destroy(collision.gameObject);
 
-            TratarEfeitosSecundarios();
+                TratarEfeitosSecundarios();
+                break;
+            }
         }
     }
 
