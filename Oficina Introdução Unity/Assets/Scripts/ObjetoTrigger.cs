@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Perigo : MonoBehaviour
+public class ObjetoTrigger : MonoBehaviour
 {
     [Tooltip("Lista de tagss do objeto que causará algum efeito ao colidir com o perigo")] 
     public List<string> tagObjetoAReagir = new List<string>();
+    [Tooltip("Se o objeto que colidirá com esse será destruído ou não")]
+    public bool destruirObjeto;
     [Tooltip("O nome da cena que será carregada quando algum objeto colidir com esse. \nDeixar em branco se não for carregar uma cena")]
     public string cenaParaCarregar;
     [Tooltip("O objeto que será ativado quando algum objeto colidir com esse. \nDeixar em branco se não for ativar nenhum objeto")]
@@ -24,7 +26,10 @@ public class Perigo : MonoBehaviour
         {
             if (tagObjeto == collision.gameObject.tag)
             {
-                Destroy(collision.gameObject);
+                if (destruirObjeto)
+                {
+                    Destroy(collision.gameObject);
+                }
 
                 TratarEfeitosSecundarios();
                 break;
@@ -38,7 +43,10 @@ public class Perigo : MonoBehaviour
         {
             if (tagObjeto == collision.gameObject.tag)
             {
-                Destroy(collision.gameObject);
+                if (destruirObjeto)
+                {
+                    Destroy(collision.gameObject);
+                }
 
                 TratarEfeitosSecundarios();
                 break;
@@ -54,7 +62,10 @@ public class Perigo : MonoBehaviour
         {
             if (tagObjeto == collision.gameObject.tag)
             {
-                Destroy(collision.gameObject);
+                if (destruirObjeto)
+                {
+                    Destroy(collision.gameObject);
+                }
 
                 TratarEfeitosSecundarios();
                 break;
@@ -68,7 +79,10 @@ public class Perigo : MonoBehaviour
         {
             if (tagObjeto == collision.gameObject.tag)
             {
-                Destroy(collision.gameObject);
+                if (destruirObjeto)
+                {
+                    Destroy(collision.gameObject);
+                }
 
                 TratarEfeitosSecundarios();
                 break;
