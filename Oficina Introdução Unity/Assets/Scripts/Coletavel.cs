@@ -16,6 +16,8 @@ public class Coletavel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        som = GetComponent<AudioSource>();
+
         if (scriptPontuacao == null)
         {
             FindObjectOfType<Pontuacao>();
@@ -42,8 +44,8 @@ public class Coletavel : MonoBehaviour
     // Faz tudo o que é necessário para cada colisão
     private void TratarColisao()
     {
-        if (scriptableObjectDoColetavel.destruirColetavel)
-            Destroy(this);
+        GetComponent<Collider>().enabled = false;
+        GetComponent<MeshRenderer>().enabled = false;
 
         if(scriptableObjectDoColetavel.somATocar != null)
             som.Play();
@@ -52,5 +54,20 @@ public class Coletavel : MonoBehaviour
             particula.Play();
 
         scriptPontuacao.AumentarPontuacao(scriptableObjectDoColetavel.valorDoColetavel);
+
+        StartCoroutine(DestruirObjeto());
+        
+    }
+
+    IEnumerator DestruirObjeto()
+    {
+        for (float i = 0; i < 1.5f; i += Time.deltaTime)
+        {
+            yield return null;
+        }
+        if (scriptableObjectDoColetavel.destruirColetavel)
+        {
+            Destroy(gameObject);
+        }
     }
 }
