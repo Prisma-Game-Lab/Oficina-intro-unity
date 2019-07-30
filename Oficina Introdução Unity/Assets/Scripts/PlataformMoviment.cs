@@ -7,7 +7,7 @@ public class PlataformMoviment : MonoBehaviour
     private bool moveUp = true;
     private bool moveHorizontal = true;
     public float moveSpeed, distance;
-    public bool teste1, teste2;
+    public bool moverVetical, moverHorizontal;
     
 
 
@@ -20,7 +20,7 @@ public class PlataformMoviment : MonoBehaviour
     
     void MoveToHorizontal()
     {
-        if (teste1)
+        if (moverVetical)
         {
             if (transform.position.x > distance)
             {
@@ -43,7 +43,7 @@ public class PlataformMoviment : MonoBehaviour
 
     void moveToVertical()
     {
-        if (teste2)
+        if (moverHorizontal)
         {
             if (transform.position.y > distance)
             {
