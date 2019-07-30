@@ -23,7 +23,7 @@ public class Coletavel : MonoBehaviour
 
         if(scriptableObjectDoColetavel.somATocar != null)
         {
-            //som.
+            som.clip = scriptableObjectDoColetavel.somATocar;
         }
 
         particula = GetComponent<ParticleSystem>();
@@ -45,12 +45,12 @@ public class Coletavel : MonoBehaviour
         if (scriptableObjectDoColetavel.destruirColetavel)
             Destroy(this);
 
-        if(audioATocar != null)
-            audioATocar.Play();
+        if(scriptableObjectDoColetavel.somATocar != null)
+            som.Play();
 
         if (particula != null)
             particula.Play();
 
-        scriptPontuacao.AumentarPontuacao()
+        scriptPontuacao.AumentarPontuacao(scriptableObjectDoColetavel.valorDoColetavel);
     }
 }
