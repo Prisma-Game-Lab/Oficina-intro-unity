@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Pontuacao : MonoBehaviour
 {
+    [TextArea]
+    [Tooltip("Não faz nada, é só uma instrução sobre como usar o script")]
+    public string Notes = "Serve para guardar e mostrar a pontuação do jogador. \n" +
+                            "Caso queira, também pode botar um objetivo de pontos que ativa um GameObject ou carrega uma cena ao ser batido!";
+
     private float pontuacao;
     [Tooltip("Se o jogo fará alguma coisa ao atingir uma determinada pontuação máxima")]
     public bool temPontuacaoObjetivo;
     [Tooltip("A pontuação a ser atingida para fazer com que o jogo faça alguma coisa")]
     public float pontuacaoObjetivo;
 
-    [Tooltip("O nome da cena que será carregada quando algum objeto colidir com esse. \nDeixar em branco se não for carregar uma cena")]
+    [Tooltip("O nome da cena que será carregada quando a pontuação atingir o objetivo. \nDeixar em branco se não for carregar uma cena")]
     public string cenaParaCarregar;
-    [Tooltip("O objeto que será ativado quando algum objeto colidir com esse. \nDeixar em branco se não for ativar nenhum objeto")]
+    [Tooltip("O objeto que será ativado quando a pontuação atingir o objetivo. \nDeixar em branco se não for ativar nenhum objeto")]
     public List<GameObject> objetosParaAtivar = new List<GameObject>();
     [Tooltip("Quantos segundos a cena demorará para ser carregada. Caso a transição seja instantânea, deixe em branco")]
     public float atrasoCarregamentoCena;
