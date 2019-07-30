@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
 {
-
+    
     public int vida;
     public int numDeCoracoes;
 
